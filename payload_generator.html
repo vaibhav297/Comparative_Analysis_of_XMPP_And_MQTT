@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+      <head>
+            <meta charset="utf-8">
+            <title>Sample Payload Generator</title>
+      </head>
+      <body>
+            Size of payload (in bytes) <input type="number" id="psize" name="psize" value="">
+            <input type="button" name="generate" value="Generate" onclick="generate_payload();"><br>
+            Payload<br>
+            <textarea id="payload" name="payload" rows="100" cols="500"></textarea>
+            <script type="text/javascript">
+                  function generate_payload() {
+                        var payload_size = document.getElementById("psize").value;
+                        generate_random_data(payload_size);
+                  }
+
+                  function generate_random_data(size) {
+                        var chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+                        var len = chars.length;
+                        var random_data = [];
+                        while (size--) {
+                              random_data.push(chars[Math.random()*len | 0]);
+                        }
+                        document.getElementById("payload").value = random_data.join('');
+                  }
+            </script>
+      </body>
+</html>
